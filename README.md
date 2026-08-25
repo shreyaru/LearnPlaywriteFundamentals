@@ -10,7 +10,7 @@ A comprehensive, hands-on learning repository for mastering **Playwright** — t
 LearnPlaywrightFundamentals/
 ├── tests/
 │   ├── 01_Basics/                        # Playwright setup, first launch, browser contexts
-│   ├── 02_first_tests/                   # Writing and running your first test specs
+│   ├── 02_First_tests/                   # Writing and running your first test specs
 │   ├── 03_Locators_Commands/             # Locator strategies (CSS, XPath, text, role, etc.)
 │   ├── 04_Session_Storage/               # Working with cookies, localStorage & sessionStorage
 │   ├── 05_Allure_Reporting/              # Integrating Allure reports with Playwright
@@ -33,9 +33,12 @@ LearnPlaywrightFundamentals/
 │   ├── 22_Misc_Concepts/                 # Miscellaneous tips, tricks & utilities
 │   ├── 23_Advance_Framework/             # Advanced framework architecture & patterns
 │   ├── Projects/                         # Mini end-to-end project examples
+│   ├── practice-demo/                    # Practice exercises & real-world demo tests
+│   ├── template.spec.ts                  # Reusable test file template
 │   └── example.spec.ts                   # Default Playwright sample test
 ├── playwright.config.ts                  # Playwright configuration
 ├── package.json                          # Node.js project metadata & dependencies
+├── tsconfig.json                         # TypeScript compiler configuration
 ├── .gitignore                            # Git ignore rules
 └── README.md                             # ← You are here
 ```
@@ -66,14 +69,14 @@ npx playwright install
 ### Running Tests
 
 ```bash
-# Run all tests (headless)
+# Run all tests (headed — browser window visible by default)
 npx playwright test
 
-# Run tests with browser UI visible
-npx playwright test --headed
+# Run tests in headless mode
+npx playwright test --headed=false
 
 # Run a specific test file
-npx playwright test tests/01_Basics/my-test.spec.ts
+npx playwright test tests/01_Basics/201_Basic_Test_spec.ts
 
 # Run tests in a specific folder
 npx playwright test tests/03_Locators_Commands/
@@ -84,12 +87,29 @@ npx playwright show-report
 
 ---
 
+## 📊 Allure Reporting
+
+This project integrates [Allure](https://allurereport.org/) for rich, detailed test reports with screenshots, videos, and trace attachments.
+
+```bash
+# Generate the Allure report from results
+npm run allure:generate
+
+# Open the Allure report in your browser
+npm run allure:open
+
+# Generate and open in one step
+npm run allure:report
+```
+
+---
+
 ## 📚 Topic Index
 
 | #  | Folder                          | What You'll Learn                                          |
 |----|---------------------------------|------------------------------------------------------------|
 | 01 | `01_Basics`                     | Project setup, browser launch, contexts, pages             |
-| 02 | `02_first_tests`                | Writing specs, `test()` blocks, basic assertions           |
+| 02 | `02_First_tests`                | Writing specs, `test()` blocks, basic assertions           |
 | 03 | `03_Locators_Commands`          | CSS / XPath / role / text locators, chaining               |
 | 04 | `04_Session_Storage`            | Cookies, localStorage, sessionStorage management           |
 | 05 | `05_Allure_Reporting`           | Allure reporter integration & configuration                |
@@ -112,6 +132,7 @@ npx playwright show-report
 | 22 | `22_Misc_Concepts`              | Retries, screenshots, videos, tracing, timeouts            |
 | 23 | `23_Advance_Framework`          | CI/CD integration, parallel execution, advanced config     |
 | —  | `Projects`                      | Complete mini-projects combining multiple concepts          |
+| —  | `practice-demo`                 | Practice exercises & real-world demo tests                  |
 
 ---
 
@@ -119,22 +140,39 @@ npx playwright show-report
 
 The Playwright configuration lives in [`playwright.config.ts`](playwright.config.ts). Key settings:
 
-| Setting          | Value              | Description                              |
-|------------------|--------------------|------------------------------------------|
-| `testDir`        | `./tests`          | Root directory for test files            |
-| `fullyParallel`  | `true`             | Run test files in parallel               |
-| `retries`        | `2` (CI) / `0`     | Retry count based on environment         |
-| `reporter`       | `html`             | HTML report generation                   |
-| `trace`          | `on-first-retry`   | Collect trace on first retry             |
-| Browser          | Chromium            | Default project (Firefox/WebKit available)|
+| Setting          | Value                             | Description                                    |
+|------------------|-----------------------------------|------------------------------------------------|
+| `testDir`        | `./tests`                         | Root directory for test files                  |
+| `testMatch`      | `**/*_spec.ts`, `**/*.spec.ts`    | Matches both `_spec.ts` and `.spec.ts` files   |
+| `fullyParallel`  | `true`                            | Run test files in parallel                     |
+| `retries`        | `2` (CI) / `0`                    | Retry count based on environment               |
+| `reporter`       | `line` + `allure-playwright`      | Console line reporter + Allure report          |
+| `headless`       | `false`                           | Tests run with visible browser by default      |
+| `trace`          | `on`                              | Always collect traces for debugging            |
+| `screenshot`     | `on`                              | Capture screenshots for every test             |
+| `video`          | `on`                              | Record video for every test                    |
+| `viewport`       | `1920 × 1080`                     | Full HD viewport size                          |
+| Browser          | Chromium                          | Default project (Firefox/WebKit available)     |
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **[Playwright](https://playwright.dev/)** `^1.62.1` — Cross-browser E2E testing
-- **TypeScript** — Type-safe test authoring
+- **[TypeScript](https://www.typescriptlang.org/)** `^7.0.2` — Type-safe test authoring
+- **[Allure Reporter](https://allurereport.org/)** `^3.10.2` — Rich test reporting with screenshots & videos
 - **Node.js** — Runtime environment
+
+---
+
+## 📜 Available Scripts
+
+| Script              | Command                        | Description                                  |
+|---------------------|--------------------------------|----------------------------------------------|
+| `test`              | `npx playwright test`          | Run all Playwright tests                     |
+| `allure:generate`   | `npx allure generate ...`      | Generate Allure report from results          |
+| `allure:open`       | `npx allure open ...`          | Open the Allure report in browser            |
+| `allure:report`     | Generate + Open combined       | One-step report generation and viewing       |
 
 ---
 
