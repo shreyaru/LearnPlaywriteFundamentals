@@ -27,6 +27,7 @@ export default defineConfig({
   reporter: [
     ["line"],
     ["allure-playwright", { outputFolder: "./allure-results" }],
+    ["./utils/CustomReporter.ts"],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -40,15 +41,25 @@ export default defineConfig({
     headless: false,
     screenshot: 'on',
     video: 'on',
-    viewport: { width: 1920, height: 1080 }
+    viewport: null,
+    launchOptions: {
+      args: ['--start-maximized'],
+    }
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...(() => {
+          const { viewport, deviceScaleFactor, ...rest } = devices['Desktop Chrome'];
+          return rest;
+        })(),
+        viewport: null,
+      },
     },
+
 
     // {
     //   name: 'firefox',

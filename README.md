@@ -36,6 +36,8 @@ LearnPlaywrightFundamentals/
 │   ├── practice-demo/                    # Practice exercises & real-world demo tests
 │   ├── template.spec.ts                  # Reusable test file template
 │   └── example.spec.ts                   # Default Playwright sample test
+├── utils/                                # Utility scripts (custom reporter, etc.)
+├── DownOut/                              # Downloaded files output directory
 ├── playwright.config.ts                  # Playwright configuration
 ├── package.json                          # Node.js project metadata & dependencies
 ├── tsconfig.json                         # TypeScript compiler configuration
@@ -151,7 +153,7 @@ The Playwright configuration lives in [`playwright.config.ts`](playwright.config
 | `trace`          | `on`                              | Always collect traces for debugging            |
 | `screenshot`     | `on`                              | Capture screenshots for every test             |
 | `video`          | `on`                              | Record video for every test                    |
-| `viewport`       | `1920 × 1080`                     | Full HD viewport size                          |
+| `viewport`       | `null` (maximized)                | Uses full browser window via `--start-maximized`   |
 | Browser          | Chromium                          | Default project (Firefox/WebKit available)     |
 
 ---
