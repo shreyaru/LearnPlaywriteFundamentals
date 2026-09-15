@@ -1,6 +1,7 @@
 
 # OS
 .DS_Store
+**/.DS_Store
 
 # Playwright
 node_modules/
@@ -12,3 +13,4 @@ node_modules/
 /allure-results/
 /allure-report/
 /tta-report/
+/DownOut/
