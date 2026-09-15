@@ -14,10 +14,15 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.62.1",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^26.2.0",
     "allure-commandline": "^2.43.0",
     "allure-playwright": "^3.10.2",
-    "typescript": "^7.0.2"
+    "js-yaml": "^5.4.1",
+    "mysql2": "^3.24.4",
+    "typescript": "^7.0.2",
+    "xlsx": "^0.18.5"
   }
 }

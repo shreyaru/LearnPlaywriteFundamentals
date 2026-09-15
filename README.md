@@ -125,11 +125,11 @@ npm run allure:report
 | 13 | `13_Shadow_DOM`                 | Shadow root piercing, `locator()` in shadow DOM            |
 | 14 | `14_FileUpload`                 | `setInputFiles()`, file chooser events                     |
 | 15 | `15_File_Download`              | Download event handling, path validation                   |
-| 16 | `16_Scroll_toElement`           | `scrollIntoViewIfNeeded()`, wheel events                   |
-| 17 | `17_Expect_Assertions`          | `toBeVisible()`, `toHaveText()`, `toHaveURL()`, etc.       |
-| 18 | `18_Test_hooks`                 | Lifecycle hooks for setup & teardown                       |
-| 19 | `19_Data_Driven_Testing`        | Parameterized tests, CSV/JSON-driven data                  |
-| 20 | `20_Page_Object_Model`          | POM classes, encapsulation, reusable page methods          |
+| 16 | `16_Scroll_toElement`           | `scrollIntoViewIfNeeded()`, wheel events, scroll-to-view   |
+| 17 | `17_Expect_Assertions`          | `expect()`, soft assertions, project-scoped matchers, cheatsheet |
+| 18 | `18_Test_hooks`                 | `beforeAll/afterAll`, `describe` groups, Chrome args, test priority |
+| 19 | `19_Data_Driven_Testing`        | DDT with JSON, CSV, YAML, XLSX, MySQL, Faker.js & file I/O |
+| 20 | `20_Page_Object_Model`          | POM classes, snap locators, inventory page, with/without POM |
 | 21 | `21_Fixture`                    | Custom fixtures, extending test context                    |
 | 22 | `22_Misc_Concepts`              | Retries, screenshots, videos, tracing, timeouts            |
 | 23 | `23_Advance_Framework`          | CI/CD integration, parallel execution, advanced config     |
